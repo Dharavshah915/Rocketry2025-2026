@@ -1,0 +1,1 @@
+    csv_path = os.path.join(project_root, "SingularRunThrough", "processed_wind.csv")
