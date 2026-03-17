@@ -45,5 +45,15 @@ def convert_to_uv(input_file, output_file):
 
 # --- Example Usage ---
 # Pass in the transformed files created by DayGenerator.py
-convert_to_uv('TestGeneration/Fast/FastDay_transformed.csv', 'TestGeneration/FastUV/FastDay_UV.csv')
-convert_to_uv('TestGeneration/Slow/Slowday_transformed.csv', 'TestGeneration/SlowUV/Slowday_UV.csv')
+
+
+def loopct_uv(input_file, output_file):
+    for i in range(100):
+        input = input_file + str(i) + '.csv'
+        output = output_file + str(i) + '.csv'
+        convert_to_uv(input, output)
+
+# convert_to_uv('TestGeneration/Fast/FastDay_transformed', 'TestGeneration/FastUV/FastDay_UV')
+# convert_to_uv('TestGeneration/Slow/Slowday_transformed', 'TestGeneration/SlowUV/Slowday_UV')
+loopct_uv('TestGeneration/Fast/FastDay_transformed', 'TestGeneration/FastUV/FastDay_UV')
+loopct_uv('TestGeneration/Slow/Slowday_transformed', 'TestGeneration/SlowUV/Slowday_UV')

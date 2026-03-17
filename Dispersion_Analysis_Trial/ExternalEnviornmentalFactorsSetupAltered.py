@@ -89,11 +89,35 @@ def use_chosen_day(envi):
 
     )
 
-def NOAA_Sucks_Weather():
+# def NOAA_Sucks_Weather():
+#     script_dir = os.path.dirname(os.path.abspath(__file__))
+#     project_root = os.path.dirname(script_dir)
+#     # csv_path = os.path.join(project_root, "transformedWindData", "transformed_2025081100-73111.csv")
+#     csv_path = os.path.join(project_root, "TestGeneration", "FastUV", "FastDay_UV.csv")
+
+#     data = np.loadtxt(csv_path, delimiter=",", skiprows=1)
+#     h, u, v = data[:, 0], data[:, 1], data[:, 2]
+#     wind_u = list(zip(h, u))
+#     wind_v = list(zip(h, v))
+
+#     envi = rocketpy.Environment(latitude=43.2557, longitude=-79.8711, elevation=1400)
+#     tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+#     envi.set_date((tomorrow.year, tomorrow.month, tomorrow.day, 12))
+#     envi.max_expected_height = 20000
+#     envi.set_atmospheric_model(
+#         type="custom_atmosphere",
+#         pressure=None,
+#         temperature=None,
+#         wind_u=wind_u,
+#         wind_v=wind_v,
+#     )
+#     return envi
+
+def NOAA_Sucks_Weather(FileName="FastDay_UV.csv"):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(script_dir)
     # csv_path = os.path.join(project_root, "transformedWindData", "transformed_2025081100-73111.csv")
-    csv_path = os.path.join(project_root, "TestGeneration", "FastUV", "FastDay_UV.csv")
+    csv_path = os.path.join(project_root, "TestGeneration", "FastUV", FileName)
 
     data = np.loadtxt(csv_path, delimiter=",", skiprows=1)
     h, u, v = data[:, 0], data[:, 1], data[:, 2]

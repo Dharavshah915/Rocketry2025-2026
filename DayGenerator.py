@@ -68,13 +68,24 @@ def transform_wind_data(input_file, output_file, a, b, c, d):
     df_standard.to_csv(out_path, index=False)
     print(f"Successfully processed {in_path} and saved to {out_path}")
 
+def looptwd(input_file, output_file, a, b, c, d):
+    for i in range(100):
+        c =np.random.uniform(0,360)
+        a = np.random.normal(1,0.5)  #first param is mu (u), second is std
+        b = np.random.normal(0.2, 0.5)
+        d = np.random.normal(1,3)
+        output = output_file + str(i) + '.csv'
+        transform_wind_data(input_file, output, a, b, c, d)
+
 # --- Example Usage ---
 # Set your parameters here:
-a = 1.2  # Multiply wind speed by 1.2
-b = 2.0  # Add a random value between -2.0 and 2.0 to wind speed
-c = 50   # Add 50 degrees to direction
-d = 5.0  # Add a random value betweena -5.0 and 5.0 to direction
+a = 1  # Multiply wind speed by 1.2
+b = 0.8  # Add a random value between -2.0 and 2.0 to wind speed
+c = 130   # Add 50 degrees to direction
+d = 1  # Add a random value betweena -5.0 and 5.0 to direction
 
 # Run the function on your files (paths now resolved relative to this script)
-transform_wind_data('2FilesFromTeamsFiltered/Fast/FastDay.csv', 'TestGeneration/Fast/FastDay_transformed.csv', a, b, c, d)
-transform_wind_data('2FilesFromTeamsFiltered/Slow/Slowday.csv', 'TestGeneration/Slow/Slowday_transformed.csv', a, b, c, d)
+looptwd('2FilesFromTeamsFiltered/Fast/FastDay.csv', 'TestGeneration/Fast/FastDay_transformed', a, b, c, d)
+looptwd('2FilesFromTeamsFiltered/Slow/Slowday.csv', 'TestGeneration/Slow/Slowday_transformed', a, b, c, d)
+# transform_wind_data('2FilesFromTeamsFiltered/Fast/FastDay.csv', 'TestGeneration/Fast/FastDay_transformed.csv', a, b, c, d)
+# transform_wind_data('2FilesFromTeamsFiltered/Slow/Slowday.csv', 'TestGeneration/Slow/Slowday_transformed.csv', a, b, c, d)
